@@ -1,0 +1,8 @@
+.fs {
+    font-size: 14px;
+}
+
+/* ------------- Datatable --------- */
+.page-item.active .page-link {
+    background-color: #B138F7;
+}
