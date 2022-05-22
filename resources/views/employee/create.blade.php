@@ -8,13 +8,13 @@
         Back
     </a>
     <div class="card p-4 mb-5">
-        <form action="" method="POST">
+        <form action="{{ route('employee.store') }}" method="POST">
             @csrf
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4 ">
                 <input type="email" id="employeeid" class="form-control" name="employeeid" />
                 <label class="form-label fs" for="employeeid">Employee ID</label>
             </div>
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4 mt-3">
                 <input type="text" id="name" class="form-control" name="name" />
                 <label class="form-label fs" for="name">Name</label>
             </div>
@@ -50,6 +50,10 @@
                 <label for="gender">Gender</label>
             </div>
             <div class="form-outline mb-4">
+                <input type="text" id="password" class="form-control" name="password" />
+                <label class="form-label fs" for="password">Password</label>
+            </div>
+            <div class="form-outline mb-4">
                 <textarea class="form-control" id="address" rows="4" name="address"></textarea>
                 <label class="form-label" for="address">Address</label>
             </div>
@@ -65,7 +69,7 @@
                 <label for="gender">Is Present?</label>
             </div>
             <div class="mb-2">
-                <button type="submit" class="btn btn-secondary btn-sm btn-block w-50 mx-auto">Confirm</button>
+                <button type="submit" class="btn btn-secondary btn-sm btn-block  mx-auto">Confirm</button>
             </div>
 
         </form>
@@ -73,6 +77,7 @@
 @endsection
 
 @push('scripts')
+{!! JsValidator::formRequest('App\Http\Requests\StoreEmployeeRequest') !!}
     <script>
         $(document).ready(function() {
             $('.datepicker').daterangepicker({

@@ -16,6 +16,7 @@
                     <th class="text-center ">Email</th>
                     <th class="text-center">Department</th>
                     <th class="text-center">Is Present</th>
+                    <th class="text-center">Updated at</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,9 +62,32 @@
                         data: 'is_present',
                         name: 'is_present',
                         class: 'text-center'
+                    },
+                    {
+                        data: 'updated_at',
+                        name: 'updated_at',
+                        class: 'text-center'
                     }
-                ]
+                ],
+                "order": [
+                    [6, "desc"]
+                ],
+                columnDefs: [{
+                    target: 6,
+                    visible: false,
+                    searchable: true,
+                }],
             });
+
+            @if (session('success'))
+                Swal.fire({
+                    title: 'Success!',
+                    text: "{{ session('success') }}",
+                    icon: 'success',
+                    confirmButtonText: 'Continue'
+                });
+            @endif
+
         });
     </script>
 @endpush

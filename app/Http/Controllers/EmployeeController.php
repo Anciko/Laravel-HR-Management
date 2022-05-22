@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Department;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 
 class EmployeeController extends Controller
@@ -28,6 +30,9 @@ class EmployeeController extends Controller
                 ->editColumn('is_present', function($each) {
                     return $each->is_present == 1 ? "<span class='badge badge-pill badge-success p-2'>Present</span>" : "<span class='badge badge-pill badge-danger p-2'>Absence</span>";
                 })
+                ->editColumn('updated_at', function($each) {
+                    return Carbon::parse($each->updated_at)->format("Y-m-d H:i:s");
+                })
                 ->rawColumns(['is_present'])
                 ->make(true);
     }
@@ -50,7 +55,22 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $employee = new User();
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->phone = $request->phone;
+        $employee->password = Hash::make($request->password);
+        $employee->employee_id = $request->employeeid;
+        $employee->nrc_number = $request->nrc;
+        $employee->birthday = $request->birthday;
+        $employee->gender = $request->gender;
+        $employee->address = $request->address;
+        $employee->department_id = $request->department;
+        $employee->date_of_join = $request->dateOfJoin;
+        $employee->is_present = $request->present;
+
+        $employee->save();
+        return redirect()->route('employee.index')->with('success', 'Employee is created successfully!');
     }
 
     /**

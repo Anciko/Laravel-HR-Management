@@ -86,14 +86,14 @@
                 <h5 class="text-center text-secondary  mb-0 align-self-center"> @yield('title') </h5>
             </div>
         </div>
-        <main class="pt-4 my-4">
+        <main class="pt-4 my-4 vh-100">
             <div class="d-flex">
                 <div class="col-md-8 mx-auto">
                     @yield('content')
                 </div>
             </div>
         </main>
-        <footer class="bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0 w-100 d-flex justify-content-evenly">
+        <footer class="bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly" style="z-index: 10">
             <a href="" class="text-secondary text-center d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
@@ -126,7 +126,10 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <!-- Daterange picker -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+     <!-- Sweet Alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('scripts')
 </body>
 
