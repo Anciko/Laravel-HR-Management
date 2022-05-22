@@ -25,6 +25,8 @@
 
     <!-- Datatable -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.0/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href=" https://cdn.datatables.net/fixedheader/3.2.3/css/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css">
 
     <!-- Daterange picker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
@@ -38,9 +40,8 @@
 
 <body class="bg-light">
     <div id="app">
-
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
-            aria-labelledby="offcanvasExampleLabel" style="max-width: 270px;">
+            aria-labelledby="offcanvasExampleLabel" style="max-width: 260px;">
             <div class="offcanvas-header shadow-sm">
                 <h6 class="offcanvas-title" id="offcanvasExampleLabel">Ninja HR</h6>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
@@ -77,7 +78,7 @@
             </div>
         </div>
         {{--  --}}
-        <div class="header-menu shadow-sm p-2 bg-white d-flex ">
+        <div class="header-menu shadow-sm p-2 bg-white d-flex">
             <div class="col-2 text-center pt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                 role="button" aria-controls="offcanvasExample">
                 <i class='bx bx-menu-alt-left bx-sm text-secondary'></i>
@@ -86,14 +87,14 @@
                 <h5 class="text-center text-secondary  mb-0 align-self-center"> @yield('title') </h5>
             </div>
         </div>
-        <main class="pt-4 my-4 vh-100">
-            <div class="d-flex">
-                <div class="col-md-8 mx-auto">
+        <main class="pt-4 my-4" style="min-height: 1100px;">
+            <div class="">
+                <div class="col-8 mx-auto">
                     @yield('content')
                 </div>
             </div>
         </main>
-        <footer class="bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly" style="z-index: 10">
+        <footer class=" bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly" style="z-index: 10">
             <a href="" class="text-secondary text-center d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
@@ -120,6 +121,9 @@
     <!-- Datatable -->
     <script src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.0/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
     <!-- Moment -->

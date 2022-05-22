@@ -68,8 +68,8 @@
                 </select>
                 <label for="gender">Is Present?</label>
             </div>
-            <div class="mb-2">
-                <button type="submit" class="btn btn-secondary btn-sm btn-block  mx-auto">Confirm</button>
+            <div class="mb-2 col-md-6 mx-auto">
+                <button type="submit" class="btn btn-secondary btn-block btn-sm">Confirm</button>
             </div>
 
         </form>

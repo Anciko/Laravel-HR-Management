@@ -6,8 +6,8 @@
     <a href="{{ route('employee.create') }}" class="btn btn-secondary btn-sm mb-3">
         <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Employee
     </a>
-    <div class="card p-4 ">
-        <table class="table table-bordered Datatable">
+    <div class="card p-4 mb-5">
+        <table class="table table-bordered Datatable" style="width: 100%">
             <thead>
                 <tr>
                     <th class="text-center">Employee ID</th>
@@ -29,7 +29,8 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.Datatable').DataTable({
+           var table =  $('.Datatable').DataTable({
+                responsive: true,
                 processing: true,
                 serverSide: true,
                 ajax: '/employee/datatable/ssd',
@@ -78,6 +79,8 @@
                     searchable: true,
                 }],
             });
+
+            new $.fn.dataTable.FixedHeader( table );
 
             @if (session('success'))
                 Swal.fire({
