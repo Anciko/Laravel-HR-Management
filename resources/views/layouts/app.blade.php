@@ -87,10 +87,11 @@
                 <h5 class="text-center text-secondary  mb-0 align-self-center"> @yield('title') </h5>
             </div>
         </div>
-        <main class="pt-4 my-4" style="min-height: 1100px;">
+        <main class="pt-4 my-4">
             <div class="">
                 <div class="col-8 mx-auto">
                     @yield('content')
+                    <div style="width: 100%; height: 50px;"></div>
                 </div>
             </div>
         </main>

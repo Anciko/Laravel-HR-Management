@@ -21,20 +21,33 @@ class EmployeeController extends Controller
         return view('employee.index');
     }
 
-    public function ssd() {
+    public function ssd()
+    {
         $users = User::with('department')->get();
         return DataTables::of($users)
-                ->addColumn('department', function($each) {
-                    return $each->department->name ?? '-' ;
-                })
-                ->editColumn('is_present', function($each) {
-                    return $each->is_present == 1 ? "<span class='badge badge-pill badge-success p-2'>Present</span>" : "<span class='badge badge-pill badge-danger p-2'>Absence</span>";
-                })
-                ->editColumn('updated_at', function($each) {
-                    return Carbon::parse($each->updated_at)->format("Y-m-d H:i:s");
-                })
-                ->rawColumns(['is_present'])
-                ->make(true);
+            ->addColumn('department', function ($each) {
+                return $each->department->name ?? '-';
+            })
+            ->addColumn('plus-icon', function ($each) {
+                return null;
+            })
+            ->addColumn('action', function ($each) {
+                $edit_icon = '<a href=" ' . route('employee.edit', $each->id) . ' " class="text-warning" title="edit">
+                    <i class="bx bxs-edit bx-sm"></i>
+                    </a>';
+                $detail_icon = '<a href=" ' . route('employee.show', $each->id) . ' " class="text-info" title="detail">
+                    <i class="bx bx-info-circle bx-sm"></i>
+                    </a>';
+                return '<div class="d-flex justify-content-center align-items-center align-middle">' .$edit_icon . $detail_icon. '</div>';
+            })
+            ->editColumn('is_present', function ($each) {
+                return $each->is_present == 1 ? "<span class='badge badge-pill badge-success p-2'>Present</span>" : "<span class='badge badge-pill badge-danger p-2'>Absence</span>";
+            })
+            ->editColumn('updated_at', function ($each) {
+                return Carbon::parse($each->updated_at)->format("Y-m-d H:i:s");
+            })
+            ->rawColumns(['is_present', 'action'])
+            ->make(true);
     }
     /**
      * Show the form for creating a new resource.
