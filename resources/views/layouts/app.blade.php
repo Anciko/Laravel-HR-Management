@@ -95,7 +95,9 @@
                 </div>
             </div>
         </main>
-        <footer class=" bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly" style="z-index: 10">
+        <footer
+            class=" bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly"
+            style="z-index: 10">
             <a href="" class="text-secondary text-center d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
@@ -116,7 +118,6 @@
     </div>
 
 
-
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- Datatable -->
@@ -133,8 +134,24 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <!-- Laravel Javascript Validation -->
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
-     <!-- Sweet Alert -->
+    <!-- Sweet Alert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': token.content
+                    }
+                });
+            } else {
+                console.error('CSRF TOKEN not found!');
+            }
+        })
+    </script>
     @stack('scripts')
 </body>
 

@@ -18,7 +18,7 @@
                     <th class="text-center">Department</th>
                     <th class="text-center hidden">Is Present</th>
                     <th class="text-center">Updated at</th>
-                    <th class="text-center">Action</th>
+                    <th class="text-center no-sort">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -107,8 +107,30 @@
                     }
                 ],
             });
-
             new $.fn.dataTable.FixedHeader(table);
+
+            $(document).on('click', '.delete-btn', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                swal({
+                        text: "Are you sure you want to delete?",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                method : "DELETE",
+                                url: `/employee/${id}`
+                            }).done(function(res) {
+                                console.log("deleted");
+                                table.ajax.reload();
+                            })
+                        } else {
+                            swal("Your imaginary file is safe!");
+                        }
+                    });
+            })
 
             @if (session('success'))
                 Swal.fire({
