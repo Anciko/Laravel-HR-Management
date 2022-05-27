@@ -47,7 +47,6 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
-
             <div class="offcanvas-body">
                 <div class="row shadow-sm">
                     <div class="col-6">
@@ -68,6 +67,11 @@
                             class="list-group-item list-group-item-action px-3 border-0">
                             <i class='bx bxs-group bx-sm me-4 align-middle'></i>Employees
                         </a>
+                        <a href="{{ route('department.index') }}"
+                            class="list-group-item list-group-item-action px-3 border-0">
+                            
+                            <i class='bx bxs-grid-alt bx-sm me-4 align-middle'></i>Departments
+                        </a>
                         <a href="#" class="list-group-item list-group-item-action px-3 border-0">Morbi leo risus</a>
                         <a href="#" class="list-group-item list-group-item-action px-3 border-0">Porta ac consectetur
                             ac</a>
@@ -77,14 +81,22 @@
 
             </div>
         </div>
-        {{--  --}}
+
         <div class="header-menu shadow-sm p-2 bg-white d-flex">
-            <div class="col-2 text-center pt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                role="button" aria-controls="offcanvasExample">
-                <i class='bx bx-menu-alt-left bx-sm text-secondary'></i>
-            </div>
+            @if (request()->is('/'))
+                <div class="col-2 text-center pt-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                    role="button" aria-controls="offcanvasExample">
+                    <i class='bx bx-menu-alt-left bx-sm text-secondary'></i>
+                </div>
+            @else
+                <div class="col-2 text-center pt-1" role="button">
+                    <a href="" class="text-secondary previousLink">
+                        <i class='bx  bx-arrow-back bx-sm '></i>
+                    </a>
+                </div>
+            @endif
             <div class="col-8">
-                <h5 class="text-center text-secondary  mb-0 align-self-center"> @yield('title') </h5>
+                <h5 class="text-center  mb-0 align-self-center"> @yield('title') </h5>
             </div>
         </div>
         <main class="pt-4 my-4">
@@ -98,21 +110,21 @@
         <footer
             class=" bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly"
             style="z-index: 10">
-            <a href="" class="text-secondary text-center d-flex flex-column">
+            <a href="" class=" text-center text-dark d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
             </a>
-            <a href="" class="text-secondary text-center d-flex flex-column">
+            <a href="" class="text-center text-dark d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <p class="m-0 fs">Home</p>
             </a>
-            <a href="" class="text-secondary text-center d-flex flex-column">
+            <a href="" class="text-center text-dark d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <p class="m-0 fs">Home</p>
             </a>
-            <a href="" class="text-secondary text-center d-flex flex-column">
-                <i class='bx bxs-home bx-tada-hover fs-5'></i>
-                <p class="m-0 fs">Home</p>
+            <a href="{{ route('profile') }}" class="text-center text-dark d-flex flex-column">
+                <i class='bx bxs-user bx-tada-hover fs-5'></i>
+                <p class="m-0 fs">My Profile</p>
             </a>
         </footer>
     </div>
@@ -126,6 +138,9 @@
     <script src="https://cdn.datatables.net/fixedheader/3.2.3/js/dataTables.fixedHeader.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap.min.js"></script>
+    <!-- Datatable mark.js -->
+    <script src="https://cdn.jsdelivr.net/g/mark.js(jquery.mark.min.js)"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
     <!-- Moment -->
@@ -150,6 +165,11 @@
             } else {
                 console.error('CSRF TOKEN not found!');
             }
+
+            $(document).on('click', '.previousLink', function(e) {
+                e.preventDefault();
+                window.history.back();
+            })
         })
     </script>
     @stack('scripts')

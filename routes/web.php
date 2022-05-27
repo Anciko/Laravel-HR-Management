@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,12 @@ Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function() {
     Route::get('/', [PageController::class, 'home']);
+
     Route::resource('/employee', EmployeeController::class);
     Route::get('/employee/datatable/ssd',[EmployeeController::class,'ssd']);
+
+    Route::resource('/department', DepartmentController::class);
+    Route::get('/department/datatable/ssd', [DepartmentController::class, 'ssd']);
+
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 });

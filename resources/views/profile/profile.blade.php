@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Employee\'s Details')
+@section('title', 'My Profile')
 
 @section('content')
     <div class="card p-4 mb-5 text-start">
         <div class="row">
             <div class="col-md-6 d-flex gap-3">
-                <div>
-                    <img src="{{ $employee->profile_img_path() }}" class="img-fluid rounded-circle profile_img" alt="">
+                <div class="pt-3">
+                    <img src="{{ $employee->profile_img_path() }}" class="img-fluid img-thumbnail rounded-circle profile_img " alt="">
                 </div>
                 <div class="pt-4">
                     <h5>{{ $employee->name }}</h5>
@@ -15,7 +15,7 @@
                     <p class="text-muted mb-1">{{ $employee->department ? $employee->department->name : '?' }} </p>
                 </div>
             </div>
-            <div class="col-md-6 mt-2">
+            <div class="col-md-6 mt-2 ">
                 <div class="mb-1">
                     <span class="mb-0"><i class='bx bx-phone me-2 align-middle'></i>Phone</span> -
                     <span class="text-muted"> {{ $employee->phone }} </span>

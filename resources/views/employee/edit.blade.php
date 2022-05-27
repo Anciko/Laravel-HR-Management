@@ -3,15 +3,6 @@
 @section('title', 'Edit Employee')
 
 @section('content')
-    <a href="{{ route('employee.index') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-left-arrow-circle bx-xs align-middle me-2'></i>
-        Back
-    </a>
-    @if ($errors->any())
-        @foreach ($errors->all() as $error )
-            <p class="text-danger">{{ $error }}</p>
-        @endforeach
-    @endif
     <div class="card p-4 mb-5">
         <form action="{{ route('employee.update', $employee->id) }}" id="edit-form" method="POST" enctype="multipart/form-data">
             @csrf

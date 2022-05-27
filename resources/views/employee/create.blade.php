@@ -3,10 +3,6 @@
 @section('title', 'Create Employee')
 
 @section('content')
-    <a href="{{ route('employee.index') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-left-arrow-circle bx-xs align-middle me-2'></i>
-        Back
-    </a>
     <div class="card p-4 mb-5">
         <form action="{{ route('employee.store') }}" method="POST" id="create-form" enctype="multipart/form-data">
             @csrf

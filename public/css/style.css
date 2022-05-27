@@ -1,10 +1,20 @@
 .fs {
     font-size: 14px !important;
 }
+.bg-color {
+    /* background-color: #e7e7dd; */
+    background-color: #daa8f6;
+}
 
+mark {
+    background: #daa8f6;
+}
+table.dataTable>tbody>tr {
+    vertical-align: middle;
+}
 /* ------------- Datatable --------- */
 .page-item.active .page-link {
-    background-color: #B138F7;
+    background-color: #d48ffb;
 }
 
 table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
@@ -107,6 +117,17 @@ table.table-bordered.dataTable thead tr:first-child td {
 .profile_img {
     width: 130px;
     height: 130px;
-    object-fit: contain;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #eee;
+}
+
+.profile_thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    padding: 2px;
+    object-fit: cover;
     background: #eee;
 }
