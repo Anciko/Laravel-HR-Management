@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Departments')
+@section('title', 'Roles')
 
 @section('content')
-    <a href="{{ route('department.create') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Department
+    <a href="{{ route('role.create') }}" class="btn btn-secondary btn-sm mb-3">
+        <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Role
     </a>
     <div class="card p-4 mb-5">
         <table class="table table-bordered Datatable myTable" style="width: 100%">
@@ -31,7 +31,7 @@
                 processing: true,
                 serverSide: true,
                 mark: true,
-                ajax: '/department/datatable/ssd',
+                ajax: '/role/datatable/ssd',
                 columns: [{
                         data: 'plus-icon',
                         name: 'plus-icon',
@@ -91,7 +91,7 @@
                         if (willDelete) {
                             $.ajax({
                                 method: "DELETE",
-                                url: `/department/${id}`
+                                url: `/role/${id}`
                             }).done(function(res) {
                                 console.log("deleted");
                                 table.ajax.reload();

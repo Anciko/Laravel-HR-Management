@@ -31,6 +31,8 @@
     <!-- Daterange picker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!--- Box icon  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
@@ -69,9 +71,17 @@
                         </a>
                         <a href="{{ route('department.index') }}"
                             class="list-group-item list-group-item-action px-3 border-0">
-                            
-                            <i class='bx bxs-grid-alt bx-sm me-4 align-middle'></i>Departments
+                            <i class='bx bx-sitemap bx-sm me-4 align-middle'></i>Departments
                         </a>
+                        <a href="{{ route('role.index') }}"
+                            class="list-group-item list-group-item-action px-3 border-0">
+                            <i class='fa-solid fa-user-gear me-4 align-middle'></i>Role
+                        </a>
+                        <a href="{{ route('permission.index') }}"
+                            class="list-group-item list-group-item-action px-3 border-0">
+                            <i class='bx bx-check-shield  bx-sm me-4 align-middle'></i>Permission
+                        </a>
+
                         <a href="#" class="list-group-item list-group-item-action px-3 border-0">Morbi leo risus</a>
                         <a href="#" class="list-group-item list-group-item-action px-3 border-0">Porta ac consectetur
                             ac</a>

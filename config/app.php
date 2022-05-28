@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Application Service Providers...
          */
