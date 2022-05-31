@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use Spatie\Permission\Models\Permission;
 use Yajra\DataTables\Facades\DataTables;
 
 class RoleController extends Controller
@@ -17,8 +18,8 @@ class RoleController extends Controller
 
     public function create()
     {
-        $roles = Role::orderBy('name')->get();
-        return view('role.create', compact('roles'));
+        $permissions = Permission::all();
+        return view('role.create', compact('permissions'));
     }
 
     public function store(StoreRoleRequest $request)
@@ -27,14 +28,19 @@ class RoleController extends Controller
         $role->name = $request->name;
 
         $role->save();
+
+        $role->givePermissionTo($request->permissions);
+
         return redirect()->route('role.index')->with('success', 'New Role is created successfully!');
     }
 
     public function edit($id)
     {
         $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $old_permissions = $role->permissions->pluck('id')->toArray();
 
-        return view('role.edit', compact('role'));
+        return view('role.edit', compact('role', 'permissions', 'old_permissions'));
     }
 
     public function update(UpdateRoleRequest $request, $id)
@@ -43,6 +49,10 @@ class RoleController extends Controller
         $role->name = $request->name;
 
         $role->update();
+
+        $old_permissions = $role->permissions->pluck('name')->toArray();
+        $role->revokePermissionTo($old_permissions);
+        $role->givePermissionTo($request->permissions);
         return redirect()->route('role.index')->with('success', 'New Department is updated successfully!');
     }
 
@@ -61,6 +71,14 @@ class RoleController extends Controller
             ->addColumn('plus-icon', function ($each) {
                 return null;
             })
+            ->addColumn('permissions', function($each) {
+                $output = '';
+                foreach($each->permissions as $permission) {
+                    $output .= '<span class="badge badge-pill badge-primary m-1">'.$permission->name.'</span>';
+                }
+
+                return $output;
+            })
             ->addColumn('action', function ($each) {
                 $edit_icon = '<a href=" ' . route('role.edit', $each->id) . ' " class="text-warning" title="edit">
                     <i class="bx bxs-edit bx-sm"></i>
@@ -75,7 +93,7 @@ class RoleController extends Controller
             ->editColumn('updated_at', function ($each) {
                 return Carbon::parse($each->updated_at)->format("Y-m-d H:i:s");
             })
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'permissions'])
             ->make(true);
     }
 }

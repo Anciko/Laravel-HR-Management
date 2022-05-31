@@ -120,7 +120,7 @@
         <footer
             class=" bottom-menu bg-white py-2 shadow-lg position-fixed bottom-0  w-100 d-flex justify-content-evenly"
             style="z-index: 10">
-            <a href="" class=" text-center text-dark d-flex flex-column">
+            <a href="{{ route('home') }}" class=" text-center text-dark d-flex flex-column">
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
             </a>

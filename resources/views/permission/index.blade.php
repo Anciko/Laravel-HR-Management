@@ -53,7 +53,7 @@
                     }
                 ],
                 "order": [
-                    [2, "desc"]
+                    [3, "desc"]
                 ],
                 columnDefs: [{
                         'target': 0,

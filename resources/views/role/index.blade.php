@@ -12,6 +12,7 @@
                 <tr>
                     <th class="control no-search no-sort"></th>
                     <th class="text-center">Name</th>
+                    <th class="text-center">Permissions</th>
                     <th class="text-center hidden">Updated at</th>
                     <th class="text-center no-sort">Action</th>
                 </tr>
@@ -43,6 +44,11 @@
                         class: 'text-center'
                     },
                     {
+                        data : 'permissions',
+                        name: 'permissions',
+                        class: 'text-center'
+                    },
+                    {
                         data: 'updated_at',
                         name: 'updated_at',
                         class: 'text-center'
@@ -53,7 +59,7 @@
                     }
                 ],
                 "order": [
-                    [2, "desc"]
+                    [3, "desc"]
                 ],
                 columnDefs: [{
                         'target': 0,
@@ -70,10 +76,6 @@
                     {
                         'target': 'hidden',
                         'visible': false
-                    },
-                    {
-                        'target': 2,
-                        'visible': true
                     }
                 ],
             });
