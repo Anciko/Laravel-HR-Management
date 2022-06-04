@@ -29,7 +29,7 @@
     @yield('custom_css')
 </head>
 
-<body class="bg-light">
+<body class="bg-color">
     <div id="app">
         <main class="py-4">
             @yield('content')

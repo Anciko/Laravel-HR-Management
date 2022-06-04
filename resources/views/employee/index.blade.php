@@ -3,9 +3,11 @@
 @section('title', 'Employees')
 
 @section('content')
-    <a href="{{ route('employee.create') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Employee
-    </a>
+    @can('create_employee')
+        <a href="{{ route('employee.create') }}" class="btn btn-secondary btn-sm mb-3">
+            <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Employee
+        </a>
+    @endcan
     <div class="card p-4 mb-5">
         <table class="table  table-bordered Datatable myTable" style="width: 100%">
             <thead>
@@ -16,6 +18,7 @@
                     <th class="text-center">Phone</th>
                     <th class="text-center ">Email</th>
                     <th class="text-center">Department</th>
+                    <th class="text-center">Roles</th>
                     <th class="text-center hidden">Is Present</th>
                     <th class="text-center">Updated at</th>
                     <th class="text-center no-sort">Action</th>
@@ -68,6 +71,11 @@
                         class: 'text-center'
                     },
                     {
+                        data: 'role_name',
+                        name: 'role_name',
+                        class: 'text-center'
+                    },
+                    {
                         data: 'is_present',
                         name: 'is_present',
                         class: 'text-center'
@@ -83,7 +91,7 @@
                     }
                 ],
                 "order": [
-                    [7, "desc"]
+                    [8, "desc"]
                 ],
                 columnDefs: [{
                         'target': 0,
@@ -102,7 +110,7 @@
                         'visible': false
                     },
                     {
-                        'target': 7,
+                        'target': 8,
                         'visible': false,
                         'searchable': true,
                     }
@@ -124,7 +132,6 @@
                                 method: "DELETE",
                                 url: `/employee/${id}`
                             }).done(function(res) {
-                                console.log("deleted");
                                 table.ajax.reload();
                             })
                         } else {

@@ -35,12 +35,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!--- Box icon  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-
+    <!--- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<body class="bg-light">
+<body class="bg-color">
     <div id="app">
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
             aria-labelledby="offcanvasExampleLabel" style="max-width: 260px;">
@@ -65,27 +66,34 @@
                         <a href="#" class="list-group-item list-group-item-action px-3 border-0 " aria-current="true">
                             <i class='bx bx-home bx-sm me-4 align-middle'></i>Home
                         </a>
-                        <a href="{{ route('employee.index') }}"
-                            class="list-group-item list-group-item-action px-3 border-0">
-                            <i class='bx bxs-group bx-sm me-4 align-middle'></i>Employees
-                        </a>
-                        <a href="{{ route('department.index') }}"
-                            class="list-group-item list-group-item-action px-3 border-0">
-                            <i class='bx bx-sitemap bx-sm me-4 align-middle'></i>Departments
-                        </a>
-                        <a href="{{ route('role.index') }}"
-                            class="list-group-item list-group-item-action px-3 border-0">
-                            <i class='fa-solid fa-user-gear me-4 align-middle'></i>Role
-                        </a>
-                        <a href="{{ route('permission.index') }}"
-                            class="list-group-item list-group-item-action px-3 border-0">
-                            <i class='bx bx-check-shield  bx-sm me-4 align-middle'></i>Permission
-                        </a>
+                        @can('view_employee')
+                            <a href="{{ route('employee.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class='bx bxs-group bx-sm me-4 align-middle'></i>Employees
+                            </a>
+                        @endcan
+                        @can('view_department')
+                            <a href="{{ route('department.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class='bx bx-sitemap bx-sm me-4 align-middle'></i>Departments
+                            </a>
+                        @endcan
 
-                        <a href="#" class="list-group-item list-group-item-action px-3 border-0">Morbi leo risus</a>
-                        <a href="#" class="list-group-item list-group-item-action px-3 border-0">Porta ac consectetur
-                            ac</a>
-                        <a class="list-group-item list-group-item-action px-3 border-0 disabled">Vestibulum at eros</a>
+                        @can('view_role')
+                            <a href="{{ route('role.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class='fa-solid fa-user-gear me-4 align-middle'></i>Role
+                            </a>
+                        @endcan
+
+                        @can('view_permission')
+                            <a href="{{ route('permission.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class='bx bx-check-shield  bx-sm me-4 align-middle'></i>Permission
+                            </a>
+                        @endcan
+
+
                     </div>
                 </div>
 
@@ -163,6 +171,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Sweet Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- Select2 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
             let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -180,6 +191,8 @@
                 e.preventDefault();
                 window.history.back();
             })
+
+            $('.ninja-select').select2();
         })
     </script>
     @stack('scripts')

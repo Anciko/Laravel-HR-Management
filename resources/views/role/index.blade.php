@@ -3,9 +3,11 @@
 @section('title', 'Roles')
 
 @section('content')
-    <a href="{{ route('role.create') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Role
-    </a>
+    @can('create_role')
+        <a href="{{ route('role.create') }}" class="btn btn-secondary btn-sm mb-3">
+            <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Role
+        </a>
+    @endcan
     <div class="card p-4 mb-5">
         <table class="table table-bordered Datatable myTable" style="width: 100%">
             <thead>
@@ -44,7 +46,7 @@
                         class: 'text-center'
                     },
                     {
-                        data : 'permissions',
+                        data: 'permissions',
                         name: 'permissions',
                         class: 'text-center'
                     },

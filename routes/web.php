@@ -39,5 +39,4 @@ Route::middleware('auth')->group(function() {
     Route::get('/permission/datatable/ssd', [PermissionController::class, 'ssd']);
 
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
-
 });

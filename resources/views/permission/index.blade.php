@@ -3,9 +3,11 @@
 @section('title', 'Permissions')
 
 @section('content')
-    <a href="{{ route('permission.create') }}" class="btn btn-secondary btn-sm mb-3">
-        <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Permission
-    </a>
+    @can('create_permission')
+        <a href="{{ route('permission.create') }}" class="btn btn-secondary btn-sm mb-3">
+            <i class='bx bx-plus-circle bx-xs align-middle me-2'></i>Create Permission
+        </a>
+    @endcan
     <div class="card p-4 mb-5">
         <table class="table table-bordered Datatable myTable" style="width: 100%">
             <thead>

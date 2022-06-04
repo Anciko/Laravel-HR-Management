@@ -34,6 +34,16 @@
                 </select>
                 <label for="department">Department</label>
             </div>
+
+            <div class=" mb-4">
+                <label for="department">Roles</label>
+                <select class="form-select ninja-select fs" id="role" name="roles[]" multiple>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id }}"> {{ $role->name }} </option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-floating mb-4">
                 <input type="text" id="birthday" class="form-control datepicker" name="birthday" />
                 <label class="form-label fs" for="birthday">Birthday</label>
