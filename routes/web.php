@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\EmployeeController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PermissionController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\CompanySettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/permission/datatable/ssd', [PermissionController::class, 'ssd']);
 
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+    Route::resource('company-setting', CompanySettingController::class )->only('edit','update','show');
 });

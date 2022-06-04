@@ -89,10 +89,16 @@
                         @can('view_permission')
                             <a href="{{ route('permission.index') }}"
                                 class="list-group-item list-group-item-action px-3 border-0">
-                                <i class='bx bx-check-shield  bx-sm me-4 align-middle'></i>Permission
+                                <i class='fa-solid fa-user-shield me-4 align-middle'></i>Permission
                             </a>
                         @endcan
 
+                        @can('view_company_setting')
+                            <a href="{{ route('company-setting.show', 1) }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class="fa-solid fa-building me-4 align-middle"></i>Company Setting
+                            </a>
+                        @endcan
 
                     </div>
                 </div>

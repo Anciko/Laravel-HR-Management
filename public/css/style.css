@@ -132,3 +132,10 @@ table.table-bordered.dataTable thead tr:first-child td {
     object-fit: cover;
     background: #eee;
 }
+
+.table-condensed {
+    display: none;
+}
+.daterangepicker .drp-buttons {
+    text-align: center;
+}
