@@ -9,6 +9,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanySettingController;
+use App\Http\Controllers\CheckInCheckOutController;
+use App\Http\Controllers\Auth\LoginOptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,10 @@ use App\Http\Controllers\CompanySettingController;
 |
 */
 
+
+Route::get('/login-option', [LoginOptionController::class, 'loginOption'])->name('login-option');
+Route::get('/checkin-checkout', [CheckInCheckOutController::class, 'checkInCheckOut'])->name('checkin-checkout');
+Route::post('/checkin-checkout/store', [CheckInCheckOutController::class, 'checkInCheckOutStore'])->name('checkin-checkout.store');
 
 Auth::routes(['register' => false]);
 

@@ -30,6 +30,7 @@ class UpdateEmployeeRequest extends FormRequest
             "email" => "required|email|unique:users,email,$id",
             "phone" => "required|min:9|max:11|unique:users,phone, $id",
             "nrc" => "required",
+            "pincode" => "required|unique:users,pin_code,$id|digits:6",
             "department" => "required",
             "birthday" => "required",
             "gender" => "required",

@@ -60,10 +60,7 @@
                 </select>
                 <label for="gender">Gender</label>
             </div>
-            <div class="form-outline mb-4">
-                <input type="text" id="password" class="form-control" name="password" />
-                <label class="form-label fs" for="password">Password</label>
-            </div>
+
             <div class="form-outline mb-4">
                 <textarea class="form-control" id="address" rows="4" name="address">
                     {{ $employee->address }}
@@ -88,6 +85,14 @@
                     <option value="0" @if ($employee->is_present == 0) selected @endif>No</option>
                 </select>
                 <label for="gender">Is Present?</label>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="text" id="password" class="form-control" name="password" />
+                <label class="form-label fs" for="password">Password</label>
+            </div>
+            <div class="form-outline mb-4">
+                <input type="number" id="pincode" class="form-control" name="pincode" value="{{ $employee->pin_code }}" />
+                <label class="form-label fs" for="pincode">Pin Code</label>
             </div>
             <div class="mb-2 col-md-6 mx-auto">
                 <button type="submit" class="btn btn-secondary btn-block btn-sm">Confirm</button>

@@ -34,6 +34,7 @@ class StoreEmployeeRequest extends FormRequest
             "gender" => "required",
             "address" => "required",
             "dateOfJoin" => "required",
+            "pincode" => "required|unique:users,pin_code|digits:6",
             "present" => "required"
         ];
     }

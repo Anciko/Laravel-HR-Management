@@ -121,6 +121,7 @@ class EmployeeController extends Controller
         $employee->date_of_join = $request->dateOfJoin;
         $employee->profile_img = $profile_img_name;
         $employee->is_present = $request->present;
+        $employee->pin_code = $request->pincode;
 
         $employee->save();
 
@@ -179,6 +180,7 @@ class EmployeeController extends Controller
         $employee->date_of_join = $request->dateOfJoin;
         $employee->profile_img = $profile_img_name;
         $employee->is_present = $request->present;
+        $employee->pin_code = $request->pincode;
 
         $employee->update();
 

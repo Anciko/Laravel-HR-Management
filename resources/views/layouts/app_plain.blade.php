@@ -23,8 +23,15 @@
     <!-- MD Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
 
-     <!--- Box icon  -->
-     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!--- Box icon  -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    {{-- Font awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap pincode input css -->
+    <link rel="stylesheet" href="{{ asset('css/pincode-input.css') }}">
+
     <!-- Custom css -->
     @yield('custom_css')
 </head>
@@ -36,11 +43,38 @@
         </main>
     </div>
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+    <!-- bootstrap pincode input.js -->
+    <script src="{{ asset('js/pincode-input.js') }}"></script>
+    <!-- Sweet Alert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+    <script>
+         $(document).ready(function() {
+            let token = document.head.querySelector('meta[name="csrf-token"]');
+            if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': token.content
+                    }
+                });
+            } else {
+                console.error('CSRF TOKEN not found!');
+            }
+
+            $(document).on('click', '.previousLink', function(e) {
+                e.preventDefault();
+                window.history.back();
+            })
+        })
+    </script>
     <!-- Custom js -->
-    @yield('script')
+    @stack('scripts')
 </body>
 
 </html>
