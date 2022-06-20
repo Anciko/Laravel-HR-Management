@@ -6,7 +6,7 @@
         <div class="card p-4">
             <div class="visible-print text-center">
                 <p class="mb-0">QR Code</p>
-                {!! QrCode::size(280)->generate(Request::url()) !!}
+                {!! QrCode::size(280)->generate(Hash::make(now()->format('Y-m-d'))) !!}
                 <p>Please scan QR code to checkin or checkout.</p>
             </div>
             <hr>
@@ -33,7 +33,7 @@
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-            })
+            });
             $('#pincode-input1').pincodeInput({
                 inputs: 6,
                 complete: function(value, e, errorElement) {
@@ -59,7 +59,6 @@
                             }
                             $(".pincode-input-container .pincode-input-text").val('');
                             $(".pincode-input-text").first().select().focus();
-
                         }
                     });
 

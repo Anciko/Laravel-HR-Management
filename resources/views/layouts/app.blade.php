@@ -17,9 +17,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
 
@@ -37,8 +34,12 @@
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!--- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="{{ asset('css/select2-material.css') }}"> -->
+
     <!-- Custom css -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    @yield('styles')
 </head>
 
 <body class="bg-color">
@@ -63,15 +64,18 @@
                 <div class="mt-3">
                     <p class="">Menu</p>
                     <div class="list-group list-group-light">
-                        <a href="#" class="list-group-item list-group-item-action px-3 border-0 " aria-current="true">
+                        <a href="#" class="list-group-item list-group-item-action px-3 border-0 "
+                            aria-current="true">
                             <i class='bx bx-home bx-sm me-4 align-middle'></i>Home
                         </a>
+
                         @can('view_employee')
                             <a href="{{ route('employee.index') }}"
                                 class="list-group-item list-group-item-action px-3 border-0">
                                 <i class='bx bxs-group bx-sm me-4 align-middle'></i>Employees
                             </a>
                         @endcan
+
                         @can('view_department')
                             <a href="{{ route('department.index') }}"
                                 class="list-group-item list-group-item-action px-3 border-0">
@@ -100,9 +104,22 @@
                             </a>
                         @endcan
 
+                        @can('view_attendance')
+                            <a href="{{ route('attendance.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span class="ms-4">(Employee)</span>
+                            </a>
+                        @endcan
+
+                        @can('view_attendance_overview')
+                            <a href="{{ route('attendance.overview') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span class="ms-4">(Overview)</span>
+                            </a>
+                        @endcan
+
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -124,11 +141,9 @@
             </div>
         </div>
         <main class="pt-4 my-4">
-            <div class="">
-                <div class="col-8 mx-auto">
-                    @yield('content')
-                    <div style="width: 100%; height: 50px;"></div>
-                </div>
+            <div class="col-10 mx-auto">
+                @yield('content')
+                <div style="width: 100%; height: 50px;"></div>
             </div>
         </main>
         <footer
@@ -138,13 +153,13 @@
                 <i class='bx bxs-home bx-tada-hover fs-5'></i>
                 <span class="m-0 fs">Home</span>
             </a>
-            <a href="" class="text-center text-dark d-flex flex-column">
-                <i class='bx bxs-home bx-tada-hover fs-5'></i>
-                <p class="m-0 fs">Home</p>
+            <a href="{{ route('attendance-scan') }}" class="text-center text-dark d-flex flex-column">
+                <i class='bx  bxs-calendar-alt bx-tada-hover fs-5'></i>
+                <p class="m-0 fs">Attendance</p>
             </a>
             <a href="" class="text-center text-dark d-flex flex-column">
-                <i class='bx bxs-home bx-tada-hover fs-5'></i>
-                <p class="m-0 fs">Home</p>
+                <i class='bx bx-briefcase-alt-2 bx-tada-hover fs-5'></i>
+                <p class="m-0 fs">Project</p>
             </a>
             <a href="{{ route('profile') }}" class="text-center text-dark d-flex flex-column">
                 <i class='bx bxs-user bx-tada-hover fs-5'></i>
@@ -178,8 +193,10 @@
     <!-- Sweet Alert -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Select2 -->
-
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="{{ asset('js/qr-scanner.umd.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             let token = document.head.querySelector('meta[name="csrf-token"]');
@@ -198,7 +215,7 @@
                 window.history.back();
             })
 
-            $('.ninja-select').select2();
+            $(".ninja-select").select2();
         })
     </script>
     @stack('scripts')

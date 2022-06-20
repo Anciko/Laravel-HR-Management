@@ -36,7 +36,7 @@
             </div>
 
             <div class=" mb-4">
-                <label for="department">Roles</label>
+                <label for="role">Roles</label>
                 <select class="form-select ninja-select fs" id="role" name="roles[]" multiple>
                     @foreach ($roles as $role)
                         <option value="{{ $role->id }}"> {{ $role->name }} </option>

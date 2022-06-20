@@ -133,9 +133,13 @@ table.table-bordered.dataTable thead tr:first-child td {
     background: #eee;
 }
 
-.table-condensed {
-    display: none;
-}
+
 .daterangepicker .drp-buttons {
     text-align: center;
+}
+
+/* select2 */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #aaa;
+    outline:none;
 }

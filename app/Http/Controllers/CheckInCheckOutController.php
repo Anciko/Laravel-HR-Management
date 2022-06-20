@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CheckInCheckOut;
+use App\Models\CompanySetting;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,8 @@ class CheckInCheckOutController extends Controller
 {
     public function checkInCheckOut()
     {
-        return view('checkin_checkout');
+        $company = CompanySetting::findOrFail(1);
+        return view('checkin_checkout', compact('company'));
     }
 
     public function checkInCheckOutStore(Request $request)
@@ -31,18 +33,18 @@ class CheckInCheckOutController extends Controller
 
         if (!is_null($checkin_checkout->check_in_time) && !is_null($checkin_checkout->check_out_time)) {
             return [
-                'status' => 'success',
-                'message' => 'User is already check in and check out for today',
+                'status' => 'error',
+                'message' => 'User is already checked in and checked out for today',
             ];
         }
 
         if (is_null($checkin_checkout->check_in_time)) {
             $checkin_checkout->check_in_time = now();
-            $message = 'Successfully check in at ' . now();
+            $message = 'Successfully checked in at ' . now();
         } else {
             if (is_null($checkin_checkout->check_out_time)) {
                 $checkin_checkout->check_out_time = now();
-                $message = "Successfully check out at " . now();
+                $message = "Successfully checked out at " . now();
             }
         }
 

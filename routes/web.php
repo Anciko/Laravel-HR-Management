@@ -6,6 +6,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanySettingController;
@@ -48,4 +50,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
 
     Route::resource('company-setting', CompanySettingController::class )->only('edit','update','show');
+
+    Route::resource('/attendance', AttendanceController::class)->except('show');
+    Route::get('/attendance/datatable/ssd', [AttendanceController::class, 'ssd']);
+    Route::get('/attendance/overview', [AttendanceController::class, 'overview'])->name('attendance.overview');
+    Route::get('/attendance/overview-table/', [AttendanceController::class, 'overviewTable'])->name('attendance.overview-table');
+
+    Route::get('/attendance-scan', [AttendanceScanController::class, 'scan'])->name('attendance-scan');
+    Route::post('/attendance-scan/scan-store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
+
 });
