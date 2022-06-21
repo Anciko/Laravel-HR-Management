@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Models\CheckInCheckOut;
 use App\Models\CompanySetting;
-use App\Models\Employee;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
@@ -27,7 +26,7 @@ class AttendanceController extends Controller
         if (!auth()->user()->can('view_attendance')) {
             abort(403, 'Unauthorized Action');
         }
-        $attendances = CheckInCheckOut::with('employee')->get();
+        $attendances = CheckInCheckOut::with('employee');
 
         return DataTables::of($attendances)
             ->addColumn('plus-icon', function ($each) {

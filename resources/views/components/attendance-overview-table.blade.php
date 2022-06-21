@@ -4,7 +4,9 @@
             <tr>
                 <th>Employee</th>
                 @foreach ($periods as $period)
-                    <th>{{ $period->format('d') }}</th>
+                    <th @if($period->format('D') == "Sat" || $period->format('D') == "Sun" ) class="bg-danger" @endif>
+                        {{ $period->format('d') }}
+                    </th>
                 @endforeach
             </tr>
         </thead>
@@ -45,7 +47,7 @@
                                 }
                             }
                         @endphp
-                        <td>
+                        <td @if($period->format('D') == 'Sat' || $period->format('D') == 'Sun' ) class="bg-light shadow-sm" @endif>
                             <div>{!! $checkin_icon !!}</div>
                             <div>{!! $checkout_icon !!}</div>
                         </td>

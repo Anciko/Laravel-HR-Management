@@ -13,6 +13,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\CompanySettingController;
 use App\Http\Controllers\CheckInCheckOutController;
 use App\Http\Controllers\Auth\LoginOptionController;
+use App\Http\Controllers\MyAttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,5 +59,6 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/attendance-scan', [AttendanceScanController::class, 'scan'])->name('attendance-scan');
     Route::post('/attendance-scan/scan-store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
-
+    Route::get('/myattendance/datatable/ssd', [MyAttendanceController::class, 'ssd']);
+    Route::get('/myattendance/overview-table', [MyAttendanceController::class, 'myAttendanceOverviewTable']);
 });
