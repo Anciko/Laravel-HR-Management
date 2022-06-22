@@ -14,6 +14,7 @@ use App\Http\Controllers\CompanySettingController;
 use App\Http\Controllers\CheckInCheckOutController;
 use App\Http\Controllers\Auth\LoginOptionController;
 use App\Http\Controllers\MyAttendanceController;
+use App\Http\Controllers\SalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +62,7 @@ Route::middleware('auth')->group(function() {
     Route::post('/attendance-scan/scan-store', [AttendanceScanController::class, 'scanStore'])->name('attendance-scan.store');
     Route::get('/myattendance/datatable/ssd', [MyAttendanceController::class, 'ssd']);
     Route::get('/myattendance/overview-table', [MyAttendanceController::class, 'myAttendanceOverviewTable']);
+
+    Route::resource('/salary', SalaryController::class);
+    Route::get('/salary/datatable/ssd', [SalaryController::class, 'ssd']);
 });

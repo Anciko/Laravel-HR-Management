@@ -118,6 +118,13 @@
                             </a>
                         @endcan
 
+                         @can('view_salary')
+                            <a href="{{ route('salary.index') }}"
+                                class="list-group-item list-group-item-action px-3 ">
+                                <i class="fa-solid fa-hand-holding-dollar me-3 align-middle"></i><span>Salary</span>
+                            </a>
+                        @endcan
+
                     </div>
                 </div>
             </div>

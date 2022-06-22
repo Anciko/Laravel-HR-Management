@@ -2,9 +2,11 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Employee</th>
+                <th class="align-middle">Employee</th>
                 @foreach ($periods as $period)
-                    <th @if($period->format('D') == "Sat" || $period->format('D') == "Sun" ) class="bg-danger" @endif>
+                    <th class="text-center @if ($period->format('D') == 'Sat' || $period->format('D') == 'Sun') bg-danger text-white @endif">
+                        {{$period->format('D')}}
+                        <br>
                         {{ $period->format('d') }}
                     </th>
                 @endforeach
@@ -12,7 +14,7 @@
         </thead>
         <tbody>
             @foreach ($employees as $employee)
-                <tr>
+                <tr class="text-center">
                     <td class="align-middle">{{ $employee->employee_id }}</td>
                     @foreach ($periods as $period)
                         @php
@@ -47,7 +49,7 @@
                                 }
                             }
                         @endphp
-                        <td @if($period->format('D') == 'Sat' || $period->format('D') == 'Sun' ) class="bg-light shadow-sm" @endif>
+                        <td @if ($period->format('D') == 'Sat' || $period->format('D') == 'Sun') class="bg-light shadow-sm" @endif>
                             <div>{!! $checkin_icon !!}</div>
                             <div>{!! $checkout_icon !!}</div>
                         </td>

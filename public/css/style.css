@@ -143,3 +143,8 @@ table.table-bordered.dataTable thead tr:first-child td {
     border: 1px solid #aaa;
     outline:none;
 }
+
+#user_id-error {
+    position: absolute;
+    top: 31px;
+}
