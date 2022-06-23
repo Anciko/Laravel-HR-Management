@@ -35,7 +35,7 @@
                 <select class="form-select salary-select" id="user_id" name="user_id">
                     <option value=""></option>
                     @foreach ($employees as $employee)
-                        <option value="{{ $employee->id }}"> {{ $employee->name }} </option>
+                        <option value="{{ $employee->id }}"> {{ $employee->name }} ({{$employee->employee_id}}) </option>
                     @endforeach
                 </select>
             </div>

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> NinjaHR - @yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -107,21 +107,29 @@
                         @can('view_attendance')
                             <a href="{{ route('attendance.index') }}"
                                 class="list-group-item list-group-item-action px-3 border-0">
-                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span class="ms-4">(Employee)</span>
+                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span
+                                    class="ms-4">(Employee)</span>
                             </a>
                         @endcan
 
                         @can('view_attendance_overview')
                             <a href="{{ route('attendance.overview') }}"
                                 class="list-group-item list-group-item-action px-3 border-0">
-                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span class="ms-4">(Overview)</span>
+                                <i class="fa-solid fa-calendar-check me-3 align-middle"></i>Attendance <span
+                                    class="ms-4">(Overview)</span>
                             </a>
                         @endcan
 
-                         @can('view_salary')
+                        @can('view_salary')
                             <a href="{{ route('salary.index') }}"
+                                class="list-group-item list-group-item-action px-3 border-0">
+                                <i class="fa-solid fa-money-bill me-3 align-middle"></i><span>Salary</span>
+                            </a>
+                        @endcan
+                        @can('view_payroll')
+                            <a href="{{ route('payroll.overview') }}"
                                 class="list-group-item list-group-item-action px-3 ">
-                                <i class="fa-solid fa-hand-holding-dollar me-3 align-middle"></i><span>Salary</span>
+                        <i class="fa-solid fa-hand-holding-dollar  me-3 align-middle"></i><span>Payroll</span>
                             </a>
                         @endcan
 

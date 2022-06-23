@@ -37,7 +37,7 @@ class SalaryController extends Controller
                 return $each->employee->employee_id ?? "-";
             })
             ->editColumn('month', function($each) {
-                return Carbon::parse(`2021-{$each->month}-01`)->format('M');
+                return Carbon::parse("2021-$each->month-01")->format('M');
             })
             ->addColumn('action', function ($each) {
                 $edit_icon = '';
@@ -108,7 +108,7 @@ class SalaryController extends Controller
         $salary->month = $request->month;
         $salary->year = $request->year;
         $salary->amount = $request->amount;
-        
+
         $salary->update();
         return redirect()->route('salary.index')->with('success', 'New Department is updated successfully!');
     }

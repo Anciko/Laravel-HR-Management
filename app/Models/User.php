@@ -54,4 +54,8 @@ class User extends Authenticatable
 
         return null;
     }
+
+    public function salaries() {
+        return $this->hasMany(Salary::class, 'user_id', 'id');
+    }
 }

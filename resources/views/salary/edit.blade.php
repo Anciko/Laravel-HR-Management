@@ -36,7 +36,8 @@
                 <select class="form-select salary-select" id="user_id" name="user_id">
                     <option value=""></option>
                     @foreach ($employees as $employee)
-                        <option value="{{ $employee->id }}" @if($employee->id == $salary->user_id) selected @endif> {{ $employee->employee_id}} </option>
+                        <option value="{{ $employee->id }}" @if($employee->id == $salary->user_id) selected @endif>
+                            {{$employee->name}} ({{ $employee->employee_id}}) </option>
                     @endforeach
                 </select>
             </div>

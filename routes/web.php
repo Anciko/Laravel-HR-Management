@@ -4,27 +4,24 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\PayRollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MyPayRollController;
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\MyAttendanceController;
+use App\Http\Controllers\AttendanceScanController;
 use App\Http\Controllers\CompanySettingController;
 use App\Http\Controllers\CheckInCheckOutController;
 use App\Http\Controllers\Auth\LoginOptionController;
-use App\Http\Controllers\MyAttendanceController;
-use App\Http\Controllers\SalaryController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 
@@ -65,4 +62,9 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('/salary', SalaryController::class);
     Route::get('/salary/datatable/ssd', [SalaryController::class, 'ssd']);
+
+    Route::get('/payroll', [PayRollController::class, 'payroll'])->name('payroll.overview');
+    Route::get('/payroll/overview-table/', [PayRollController::class, 'payrollTable'])->name('payroll.overview-table');
+    // Route::get('/mypayroll/datatable/ssd', [MyPayRollController::class, 'ssd']);
+   Route::get('/mypayroll/overview-table', [MyPayRollController::class, 'myPayRollTable']);
 });

@@ -55,8 +55,7 @@
     </div>
 
     <div class="card p-4 mt-4">
-        <h5>Attendace Records</h5>
-        <div class="mb-3">
+        <div class="mb-4">
             <div class="row ">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -94,10 +93,14 @@
                     <button class="btn btn-secondary  btn-block search-btn"><i class="fas fa-search"></i> Search</button>
                 </div>
             </div>
+        </div>
+        <h5 class="mb-0">Payroll</h5>
+        <div class="payroll-overview-table mb-4">
 
-            <div class="attendance-overview-table">
+        </div>
+        <h5 class="mb-0">Attendace Overview</h5>
+        <div class="attendance-overview-table mb-4">
 
-            </div>
         </div>
         <h5>Attendance Table</h5>
         <table class="table table-bordered Datatable myTable" style="width: 100%">
@@ -256,11 +259,27 @@
                 table.ajax.url(`/myattendance/datatable/ssd?month=${month}&year=${year}`).load();
             }
 
+            function payRollOverviewTable() {
+                var employee_name = $('.employee_name').val();
+                var month = $('.month-select').val();
+                var year = $('.year-select').val();
+                $.ajax({
+                    url: `/mypayroll/overview-table?month=${month}&year=${year}`,
+                    method: 'GET',
+                    success: function(res) {
+                        $('.payroll-overview-table').html(res);
+                    }
+                });
+            }
+
+            payRollOverviewTable();
             attendanceOverviewTable();
 
             $('.search-btn').on('click', function(event) {
                 event.preventDefault();
                 attendanceOverviewTable();
+                payRollOverviewTable();
+
             });
         });
     </script>
