@@ -129,7 +129,13 @@
                         @can('view_payroll')
                             <a href="{{ route('payroll.overview') }}"
                                 class="list-group-item list-group-item-action px-3 ">
-                        <i class="fa-solid fa-hand-holding-dollar  me-3 align-middle"></i><span>Payroll</span>
+                                <i class="fa-solid fa-hand-holding-dollar  me-3 align-middle"></i><span>Payroll</span>
+                            </a>
+                        @endcan
+                        @can('view_project')
+                            <a href="{{ route('project.index') }}"
+                                class="list-group-item list-group-item-action px-3 ">
+                                <i class="fa-solid fa-screwdriver-wrench me-3 align-middle"></i><span>Project</span>
                             </a>
                         @endcan
 

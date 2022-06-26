@@ -111,7 +111,7 @@ class RoleController extends Controller
         $old_permissions = $role->permissions->pluck('name')->toArray();
         $role->revokePermissionTo($old_permissions);
         $role->givePermissionTo($request->permissions);
-        return redirect()->route('role.index')->with('success', 'New Department is updated successfully!');
+        return redirect()->route('role.index')->with('success', 'New Role is updated successfully!');
     }
 
     public function destroy($id)

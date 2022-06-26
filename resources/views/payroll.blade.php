@@ -101,7 +101,7 @@
 
                 $('.search-btn').on('click', function(event) {
                     event.preventDefault();
-                    attendanceOverviewTable();
+                    payRollOverviewTable();
                 });
             })
         });
