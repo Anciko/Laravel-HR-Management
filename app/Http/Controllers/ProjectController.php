@@ -38,17 +38,20 @@ class ProjectController extends Controller
                 return Str::limit($each->description, 100, '...');
             })
             ->addColumn('leaders', function($each) {
-                $output = "";
+                $output = "<div class='d-flex flex-wrap justify-content-between'>";
                 foreach($each->leaders as $leader) {
                     $output .= '<img src=" '. $leader->profile_img_path() . ' " class="img-fluid profile-img" />';
                 }
+
+                $output .= "</div>";
                 return $output;
             })
             ->addColumn('members', function($each) {
-                $output = "";
+                $output = "<div class='d-flex justify-content-between'>";
                 foreach($each->members as $member) {
                     $output .= '<img src=" '. $member->profile_img_path() . ' " class="img-fluid profile-img" />';
                 }
+                $output .= "</div>";
                 return $output;
             })
             ->editColumn('priority', function($each) {
@@ -77,7 +80,7 @@ class ProjectController extends Controller
                 $edit_icon = '';
                 $delete_icon = '';
                 if (auth()->user()->can('edit_project')) {
-                    $edit_icon = '<a href=" ' . route('project.edit', $each->id) . ' " class="text-warning"   title="edit">
+                    $edit_icon = '<a href=" ' . route('project.edit', $each->id) . ' " class="text-warning"  title="edit">
                     <i class="bx bxs-edit bx-sm"></i>
                     </a>';
                 }
@@ -241,6 +244,11 @@ class ProjectController extends Controller
             }
         }
         return redirect()->route('project.index')->with('success', 'New Project is updated successfully!');
+    }
+
+    public function show($id) {
+        $project = Project::findOrFail($id);
+        return view('project.show', compact('project'));
     }
 
     public function destroy($id)

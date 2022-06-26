@@ -112,7 +112,6 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "drops": "up",
-                "maxDate": moment(),
                 "locale": {
                     "format": "YYYY-MM-DD"
                 }

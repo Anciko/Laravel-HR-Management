@@ -24,7 +24,8 @@
 
 @section('content')
     <div class="card p-4 mb-5">
-        <form action="{{ route('project.update', $project->id) }}" method="POST" id="edit-form" enctype="multipart/form-data">
+        <form action="{{ route('project.update', $project->id) }}" method="POST" id="edit-form"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-outline mb-4 mt-3">
@@ -48,7 +49,8 @@
                         @if ($project->images)
                             @foreach ($project->images as $image)
                                 <a href="{{ url('storage/project/' . $image) }}" target="_blank">
-                                    <img src="{{ asset('storage/project/' . $image) }}" alt="" class="img-fluid" width="100" height="100">
+                                    <img src="{{ asset('storage/project/' . $image) }}" alt="" class="img-fluid"
+                                        width="100" height="100">
                                 </a>
                             @endforeach
                         @endif
@@ -60,6 +62,13 @@
                 <label for="pdfs fs">PDF files</label>
                 <input type="file" class="form-control form-control-md" id="pdfs" name="pdfs[]" multiple
                     accept="application/pdf">
+                <div>
+                    @if ($project->files)
+                        @foreach ($project->files as $file)
+                            <a href="{{ url('storage/project/' . $file) }}" target="_blank">{{ $file }}</a> |
+                        @endforeach
+                    @endif
+                </div>
             </div>
 
             <div class="form-floating mb-4">
@@ -136,7 +145,6 @@
                 "showDropdowns": true,
                 "autoApply": true,
                 "drops": "up",
-                "maxDate": moment(),
                 "locale": {
                     "format": "YYYY-MM-DD"
                 }

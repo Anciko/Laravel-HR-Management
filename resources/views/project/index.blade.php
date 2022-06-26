@@ -6,8 +6,10 @@
         .profile-img {
             width: 35px;
             height: 35px;
-            border-radius: 50%;
-            object-fit: cover;
+            border-radius: 10%;
+            border: 1px solid #ddd;
+            padding: 2px;
+            /* object-fit: contain; */
         }
     </style>
 @endsection
@@ -27,8 +29,8 @@
                     <th class="control no-search no-sort"></th>
                     <th class="text-center">Title</th>
                     <th class="text-center">Description</th>
-                    <th class="text-center">Leaders</th>
-                    <th class="text-center">Members</th>
+                    <th class="text-center no-sort">Leaders</th>
+                    <th class="text-center no-sort">Members</th>
                     <th class="text-center">Start__Date</th>
                     <th class="text-center">Deadline</th>
                     <th class="text-center">Priority</th>
@@ -109,6 +111,7 @@
                         class: 'text-center'
                     }
                 ],
+                order : [[9, 'desc']],
                 columnDefs: [{
                         'target': 0,
                         'class': 'control'
