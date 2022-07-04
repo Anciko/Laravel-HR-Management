@@ -123,7 +123,7 @@
                 for (let i = 0; i < file_length; i++) {
                     $('.preview_img').append(
                         `<img src="${URL.createObjectURL(event.target.files[i])}" class="img-fluid me-2" width="100" />`
-                        );
+                    );
                 }
             })
 

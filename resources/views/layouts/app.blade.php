@@ -179,9 +179,9 @@
                 <i class='bx  bxs-calendar-alt bx-tada-hover fs-5'></i>
                 <p class="m-0 fs">Attendance</p>
             </a>
-            <a href="" class="text-center text-dark d-flex flex-column">
+            <a href="{{ route('my-project') }}" class="text-center text-dark d-flex flex-column">
                 <i class='bx bx-briefcase-alt-2 bx-tada-hover fs-5'></i>
-                <p class="m-0 fs">Project</p>
+                <p class="m-0 fs">My Project</p>
             </a>
             <a href="{{ route('profile') }}" class="text-center text-dark d-flex flex-column">
                 <i class='bx bxs-user bx-tada-hover fs-5'></i>

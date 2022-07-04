@@ -9,6 +9,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\MyAttendanceController;
 use App\Http\Controllers\MyPayRollController;
+use App\Http\Controllers\MyProjectController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PayRollController;
 use App\Http\Controllers\PermissionController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -70,4 +72,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('/project', ProjectController::class);
     Route::get('/project/datatable/ssd', [ProjectController::class, 'ssd']);
 
+    Route::get('/myproject', [MyProjectController::class, 'project'])->name('my-project');
+    Route::get('/myproject/{id}', [MyProjectController::class, 'show'])->name('my-project.show');
+    Route::get('/myproject/datatable/ssd', [MyProjectController::class, 'ssd']);
+
+    Route::resource('/task', TaskController::class);
+    Route::get('/tasks-data', [TaskController::class, 'taskData']);
 });
